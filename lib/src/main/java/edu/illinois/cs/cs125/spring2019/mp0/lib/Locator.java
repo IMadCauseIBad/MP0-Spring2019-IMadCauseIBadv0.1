@@ -20,6 +20,7 @@ public class Locator {
     /** Maximum valid longitude. */
     public static final double MAX_LONGITUDE = 180.0;
 
+    /** Minimum valid longitude. */
     public static final double MIN_LONGITUDE = -180.0;
 
     /** Random number generator for use by this class. */
@@ -47,13 +48,15 @@ public class Locator {
      */
     public static int farthestNorth(final double[] latitudes, final double[] longitudes,
                                     final boolean[] validLocations) {
-        int highestLat = latitudes[0];
-        for (int i = 1; i < latitudes.length; i++) {
-            if (highestLat < latitude[i]) {
-                highestLat = latitude[i];
+        double highestLat = latitudes[0];
+        int index = 0;
+        for (int i = 0; i < latitudes.length; i++) {
+            if (highestLat < latitudes[i] && validLocations[i]) {
+                highestLat = latitudes[i];
+                index = i;
             }
         }
-        return highestLat;
+        return index;
     }
 
     /**
