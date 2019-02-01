@@ -47,12 +47,18 @@ public class Locator {
      */
     public static int farthestNorth(final double[] latitudes, final double[] longitudes,
                                     final boolean[] validLocations) {
-        return 0;
+        int highestLat = latitudes[0];
+        for (int i = 1; i < latitudes.length; i++) {
+            if (highestLat < latitude[i]) {
+                highestLat = latitude[i];
+            }
+        }
+        return highestLat;
     }
 
     /**
      * Determine whether you've already been in this exact spot.
-     * <p>
+     * <p></p>
      * This function is passed the index of the current location along with arrays of latitude and longitude values,
      * and an array that indicates whether the location at an index is valid or not. (When the app starts up the
      * location arrays are initially filled with invalid measurements.)
